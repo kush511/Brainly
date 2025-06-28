@@ -1,33 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import { useState } from 'react'
+import { Button } from './components/Button'
+
 import './App.css'
+import { PlusIcon } from './icons/Plusicon'
+import { Shareicon } from './icons/Shareicon'
+import { Card } from './components/Card'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='p-4'>
+      <div className='gap-4 flex justify-end'>
+         <Button startIcon={<Shareicon size='md'/>} size='md' variant="primary" text='Share Brain'/>
+      <Button startIcon={<PlusIcon size='lg'/>} size='md' variant="secondary" text='Add content'/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
+     
+     <div className='flex gap-4'>
+       
+      <Card type='X' link='https://x.com/d4rsh_tw/status/1938485433480233006' title="Motivation"/>
+       <Card type="youtube" link='https://www.youtube.com/watch?v=JgDNFQ2RaLQ&list=RDJgDNFQ2RaLQ&start_radio=1' title="Sapphire"/>
+     </div>
+    </div>
     </>
   )
 }

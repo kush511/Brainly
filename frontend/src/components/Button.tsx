@@ -12,11 +12,11 @@ interface buttonProps {
 }
 
 const variantStyle = {
-    "primary": "bg-purple-100 text-purple-600",
+    "primary": "bg-purple-200 text-purple-600",
     "secondary": "bg-purple-600 text-white"
 }
 
-const defaultStyles = "rounded-md flex justify-center items-center"
+const defaultStyles = "rounded-md flex items-center cursor-pointer"
 
 const sizeStyles = {
     "sm":"py-1 px-2",
@@ -25,7 +25,7 @@ const sizeStyles = {
 }
 export const Button = (props: buttonProps) => {
 
-    return <button className={`${variantStyle[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
+    return <button onClick={props.onClick} className={`${variantStyle[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
        {props.startIcon ? <div className=" pr-2">{props.startIcon}</div>:null} {props.text} {props.endIcon}
         </button>
 }

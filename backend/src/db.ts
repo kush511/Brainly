@@ -18,6 +18,7 @@ const UserSchema = new Schema({
 const ContentSchema = new Schema({
     title:String,
     link:String,
+    type:String,
     tags:[{type:mongoose.Types.ObjectId,ref:"Tags"}],
     userId:{type:mongoose.Types.ObjectId,ref:"users",required:true}
 

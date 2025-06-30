@@ -9,9 +9,11 @@ import { LinkModel, UserModel } from "./db";
 import { ContentModel } from "./db";
 import { auth } from "./middleware";
 import { random } from "./utils";
+import cors from "cors"
+
 const app = express()
 app.use(express.json())
-
+app.use(cors())
 app.post("/signup",async(req,res)=>{
     const username = req.body.username
     const password = req.body.password
@@ -58,10 +60,12 @@ app.post("/signin",async(req,res)=>{
 app.post("/content",auth,async(req,res)=>{
 const link = req.body.link
 const title = req.body.title
+const type = req.body.type
 
 await ContentModel.create({
     link,
     title,
+    type,
     //@ts-ignore
     userId:req.userId,
     tags:[]
@@ -88,16 +92,17 @@ res.json({
 })
 })
 
-app.delete("/content",auth,async(req,res)=>{
+app.delete("/content", auth, async(req, res) => {
     const contentId = req.body.contentId
 
-    await ContentModel.deleteMany({
-        contentId:contentId,
-        userId:req.userId
+    await ContentModel.deleteOne({
+        _id: contentId,
+        // @ts-ignore
+        userId: req.userId
     })
-
+    
     res.json({
-        message:"content deleted"
+        message: "Content deleted"
     })
 })
 
